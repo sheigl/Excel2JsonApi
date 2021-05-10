@@ -17,7 +17,13 @@ WORKDIR /app
 COPY --from=build /app/out ./
 
 ARG ENVIRONMENT=Production
+ARG RESUB_PATH=/data/uploads/resub
+ARG REPROCESS_PATH=/data/uploads/reprocess
+ARG PROCESS_PATH=/data/uploads/process
 
 ENV ASPNETCORE_ENVIRONMENT=${ENVIRONMENT}
+ENV ASPNETCORE_ResubPath=${RESUB_PATH}
+ENV ASPNETCORE_ReprocessPath=${REPROCESS_PATH}
+ENV ASPNETCORE_ProcessPath=${PROCESS_PATH}
 
 ENTRYPOINT ["dotnet", "Excel2JsonApi.dll"]
